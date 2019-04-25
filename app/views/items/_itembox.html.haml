@@ -1,0 +1,9 @@
+= link_to item_path(item.id) do
+  .items-box
+    .items-box--img
+      =image_tag(item.image.url, class: 'main-image' )
+    .items-box--in
+      %h3.items-box--in__name
+        = item.name
+      .items-box--in__price
+        = "#{number_with_delimiter(item.price)}円"

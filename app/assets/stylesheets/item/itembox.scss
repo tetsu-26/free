@@ -1,0 +1,26 @@
+.items-box{
+  width: 226px;
+  height: 340px;
+  background-color: #f8f9fa;
+  margin: 15px;
+  &--img{
+    .main-image{
+      width: 226px;
+      height: 226px;
+      border: double;
+      border-radius: 15px;
+      border-color: #333333;
+    }
+  }
+  &--in{
+    padding: 10px;
+    &__name{
+      font-size: 19px;
+      color: #333333
+    }
+    &__price{
+      font-size: 24px;
+      color: #bf0000;
+    }
+  }
+}
