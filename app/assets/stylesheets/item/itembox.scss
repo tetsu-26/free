@@ -1,8 +1,8 @@
 .items-box{
   width: 226px;
   height: 340px;
-  background-color: #f8f9fa;
   margin: 15px;
+  background-color: #fff;
   &--img{
     .main-image{
       width: 226px;
@@ -16,7 +16,7 @@
     padding: 10px;
     &__name{
       font-size: 19px;
-      color: #333333
+      color: #333333;
     }
     &__price{
       font-size: 24px;
