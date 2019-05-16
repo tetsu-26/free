@@ -1,5 +1,5 @@
 <%= render partial:"shared/header"%>
-<%= form_for @item, url: root_path, method: 'get' do |f| %>
+<%= form_for @item, url: transaction_item_path, method: 'get' do |f| %>
   <%= f.hidden_field :buyer_id, value: current_user.id %>
   <div class="wrapper">
     <div class="col-sm-6 col-md-5 col-lg-6 aaa">

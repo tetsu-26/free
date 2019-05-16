@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:edit, :show, :destroy, :update]
+  before_action :set_item, only: [:edit, :show, :destroy, :update, :transaction]
 
   def index
     @items = Item.all
@@ -42,6 +42,13 @@ class ItemsController < ApplicationController
   def show
   end
 
+  def transaction
+    if @item.update(buyer_params)
+    else
+      render :show
+    end
+  end
+
   private
 
   def set_item
@@ -50,5 +57,9 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:image, :name, :user_id, :description, :state, :price, :local)
+  end
+
+  def buyer_params
+    params.require(:item).permit(:buyer_id)
   end
 end
