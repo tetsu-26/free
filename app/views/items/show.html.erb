@@ -1,71 +1,71 @@
 <%= render partial:"shared/header"%>
-
-<div class="wrapper">
-  <div class="col-sm-6 col-md-5 col-lg-6 aaa">
-    <%=image_tag @item.image.url, class: "main-image" %>
-  </div>
-  <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
-    <div class="content-in">
-      <div class="name-label">
-        【商品名】
-      </div>
-      <h3 class="item-name">
-        <%= @item.name %>
-      </h3>
-      <div class="item-in">
-        <div class="price-label">
-          【値段】
-        </div>
-        <div class="item-price">
-          <%= "#{number_with_delimiter(@item.price)}円" %>
-        </div>
-      </div>
-      <div class="item-in">
-        <div class="state-label">
-          【商品の状態】
-        </div>
-        <div class="item-state">
-          <%= @item.state %>
-        </div>
-      </div>
-      <div class="item-in">
-        <div class="local-label">
-          【商品ローカル】
-        </div>
-        <div class="item-local">
-          <%= @item.local %>
-        </div>
-      </div>
-      <div class="description-label">
-          【商品詳細】
-        </div>
-        <div class="item-description">
-          <%= @item.description %>
-        </div>
-      </div>
+<%= form_for @item, url: root_path, method: 'get' do |f| %>
+  <%= f.hidden_field :buyer_id, value: current_user.id %>
+  <div class="wrapper">
+    <div class="col-sm-6 col-md-5 col-lg-6 aaa">
+      <%=image_tag @item.image.url, class: "main-image" %>
     </div>
-    <div class="wrapper--footer">
-      <% if @item.buyer_id != nil %>
-        <div>
-          売り切れました
+    <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
+      <div class="content-in">
+        <div class="name-label">
+          【商品名】
         </div>
-      <% else %>
-        <% if current_user.id = @item.user_id %>
-          <%= link_to edit_item_path(@item),class: "btn-dark btn-block" do%>
-            商品を編集する
-          <% end %>
-          <%= link_to item_path(@item),method: :delete ,class: "btn-dark btn-block" do%>
-            商品を削除する
-          <% end %>
+        <h3 class="item-name">
+          <%= @item.name %>
+        </h3>
+        <div class="item-in">
+          <div class="price-label">
+            【値段】
+          </div>
+          <div class="item-price">
+            <%= "#{number_with_delimiter(@item.price)}円" %>
+          </div>
+        </div>
+        <div class="item-in">
+          <div class="state-label">
+            【商品の状態】
+          </div>
+          <div class="item-state">
+            <%= @item.state %>
+          </div>
+        </div>
+        <div class="item-in">
+          <div class="local-label">
+            【商品ローカル】
+          </div>
+          <div class="item-local">
+            <%= @item.local %>
+          </div>
+        </div>
+        <div class="description-label">
+            【商品詳細】
+          </div>
+          <div class="item-description">
+            <%= @item.description %>
+          </div>
+        </div>
+      </div>
+      <div class="wrapper--footer">
+        <% if @item.buyer_id != nil %>
+          <div>
+            売り切れました
+          </div>
         <% else %>
-          <%= link_to root_path ,class: "btn-success btn-block" do%>
-            購入する
+          <% if current_user.id==@item.user_id %>
+            <%= link_to edit_item_path(@item),class: "btn-dark btn-block" do%>
+              商品を編集する
+            <% end %>
+            <%= link_to item_path(@item),method: :delete ,class: "btn-dark btn-block" do%>
+              商品を削除する
+            <% end %>
+          <% else %>
+            <%= f.button "購入する"%>
           <% end %>
         <% end %>
-      <% end %>
-      <%= link_to root_path ,class: "btn-secondary btn-block" do%>
-        ホームにもどる
-      <% end %>
+        <%= link_to root_path ,class: "btn-secondary btn-block" do%>
+          ホームにもどる
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
+<% end %>
