@@ -1,5 +1,5 @@
 <%= render partial:"shared/header"%>
-<%= form_for @item, url: transaction_item_path, method: 'get' do |f| %>
+<%= form_for @item, url: item_tranzactions_path(@item), method: 'get' do |f| %>
   <%= f.hidden_field :buyer_id, value: current_user.id %>
   <div class="wrapper">
     <div class="col-sm-6 col-md-5 col-lg-6 aaa">
@@ -47,7 +47,7 @@
       </div>
       <div class="wrapper--footer">
         <% if @item.buyer_id != nil %>
-          <div>
+          <div class="page-link text-dark d-inline-block btn-block">
             売り切れました
           </div>
         <% else %>
@@ -59,7 +59,7 @@
               商品を削除する
             <% end %>
           <% else %>
-            <%= f.button "購入する"%>
+            <%= f.button "購入する", class: "btn-success btn-block"%>
           <% end %>
         <% end %>
         <%= link_to root_path ,class: "btn-secondary btn-block" do%>
