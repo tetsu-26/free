@@ -4,8 +4,6 @@ Rails.application.routes.draw do
 
   root 'items#index'
   resources :items do
-    member do
-      get 'transaction'
-    end
+    resources :tranzactions, only: [:index]
   end
 end
