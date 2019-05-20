@@ -4,6 +4,6 @@ Rails.application.routes.draw do
 
   root 'items#index'
   resources :items do
-    resources :tranzactions, only: [:index]
+    resources :tranzactions, only: [:index, :new, :create]
   end
 end
