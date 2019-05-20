@@ -8,13 +8,13 @@
   margin: 15px auto 4px;
 }
 .line-bc {
-  height: calc( 100vh - 120px);
-  padding: 20px 10px;
+  height: calc( 100vh - 155px);
+  padding: 5px 10px;
   max-width: 700px;
   margin: 0 auto;
-  text-align: right;
   font-size: 14px;
   background: #f8f9fa;
+  overflow: scroll;
 }
 
 /*以下、②左側のコメント*/
@@ -68,6 +68,8 @@
 /*以下、③右側の緑コメント*/
 .mycomment {
   margin: 10px 0;
+  float: right;
+  clear: right;
 }
 .mycomment p {
   display: inline-block;
@@ -78,6 +80,22 @@
   border-radius: 12px;
   background: #99FF99;
   font-size: 15px;
+}
+
+.tranzaction_form{
+  background-color: #f8f9fa;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 5px 10px;
+  .tranzaction_comment{
+    width: calc( 100% - 55px );
+    height: 35px;
+  }
+  .btn-primary{
+    background-color: #28a745;
+    border-color: #28a745;
+    height: 32px;
+  }
 }
 
 .mycomment p:after {
