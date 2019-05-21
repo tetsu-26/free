@@ -29,9 +29,9 @@
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link disabled" %>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input type="search" class="form-control mr-sm-2" placeholder="検索..." aria-label="検索...", style="width:250px">
+    <%= form_tag("/items/search", method: "get", class: "form-inline my-2 my-lg-0") do %>
+      <input type="search" name="keyword" class="form-control mr-sm-2" placeholder="検索..." aria-label="検索...", style="width:250px">
       <button type="submit" class="btn btn-outline-success my-2 my-sm-0">検索</button>
-    </form>
+    <% end %>
   </div><!-- /.navbar-collapse -->
 </nav>
