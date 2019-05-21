@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:edit, :show, :destroy, :update, :transaction]
+  before_action :set_item, only: [:edit, :show, :destroy, :update]
 
   def index
     @items = Item.all
@@ -40,6 +40,10 @@ class ItemsController < ApplicationController
   end
 
   def show
+  end
+
+  def search
+    @items = Item.where('name LIKE(?)',"%#{params[:keyword]}%")
   end
 
   private
